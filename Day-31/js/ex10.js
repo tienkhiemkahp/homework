@@ -2,7 +2,8 @@ var progressBar = document.querySelector(".progress-bar");
 var progress = progressBar.querySelector(".progress");
 var progressSpan = progress.querySelector(".progress-span");
 var timeSpan = document.querySelector(".time-span");
-
+var isDragging = false;
+var isMouseDown = false;
 //Bấm chuột xuống tại progress-bar ==> Chấm màu tím sẽ di chuyển tới vị trí vừa bấm
 
 //Tính chiều rộng của progess-bar
@@ -39,14 +40,19 @@ progressSpan.addEventListener("mousedown", function (e) {
 });
 document.addEventListener("mouseup", function () {
   document.removeEventListener("mousemove", handleDrag);
+  isDragging = false;
   lastOffsetProgressBar = offsetProgressBar;
-  rate = lastOffsetProgressBar / progressBarWidth;
+    rate = lastOffsetProgressBar / progressBarWidth;
+    if (rate < audio.currentTime / duration) {
+      rate = audio.currentTime / duration;
+    }
   audio.currentTime = rate * duration;
   if (!audio.paused) {
     audio.play()
   }
 });
 var handleDrag = function (e) {
+  isDragging = true;
   console.log(initialClientX);
   clientX = e.clientX;
   offsetProgressBar = clientX - initialClientX + lastOffsetProgressBar;
@@ -109,9 +115,10 @@ window.addEventListener("load", function () {
     var currentTime = audio.currentTime;
     currentTimeEl.innerText = getTimeFormat(currentTime);
     var rate = (currentTime / duration) * 100;
-    progress.style.width = `${rate}%`;
+    if (!isDragging) {
+      progress.style.width = `${rate}%`;
+    }
   });
-  // Tua nhạc
 });
 audio.addEventListener("ended", function () {
   audio.currentTime = 0;
