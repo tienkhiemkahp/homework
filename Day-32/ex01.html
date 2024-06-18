@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./ex01.css">
+</head>
+<body>
+    <h1>DANH SÁCH SẢN PHẨM</h1>
+    <div class="product-list">
+        <table class="product-list-table table">
+            <tr>
+                <td>STT</td>
+                <td>Tên sản phẩm</td>
+                <td>Giá</td>
+                <td>Thêm vào giỏ hàng</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td class="product-name">Sản phẩm 1</td>
+                <td class="product-price">1000</td>
+                <td>
+                    <input class="quantity" type="number" value="1" name="" id="">
+                    <button class="add-product-btn">Thêm vào giỏ</button>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td class="product-name">Sản phẩm 2</td>
+                <td class="product-price">2000</td>
+                <td>
+                    <input class="quantity" type="number" value="1" name="" id="">
+                    <button class="add-product-btn">Thêm vào giỏ</button>
+                </td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td class="product-name">Sản phẩm 3</td>
+                <td class="product-price">3000</td>
+                <td>
+                    <input class="quantity" type="number" value="1" name="" id="">
+                    <button class="add-product-btn">Thêm vào giỏ</button>
+                </td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td class="product-name">Sản phẩm 4</td>
+                <td class="product-price">4000</td>
+                <td>
+                    <input class="quantity" type="number" value="1" name="" id="">
+                    <button class="add-product-btn">Thêm vào giỏ</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="cart">
+        <h2>Giỏ Hàng</h2>
+        <span class="empty">Không có sản phẩm</span>
+        <table class="cart-table table">
+        </table>
+        <div class="cart-actions">
+            <button class="update-cart-btn">Cập nhật giỏ hàng</button>
+            <button class="clear-cart-btn">Xóa giỏ hàng</button>
+        </div>
+    </div>
+    <script src="./ex01.js"></script>
+</body>
+</html>
