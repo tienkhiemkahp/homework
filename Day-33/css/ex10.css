@@ -1,0 +1,116 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.player {
+  width: 80%;
+  margin: 30px auto;
+  height: 100vh;
+}
+.player .play-btn {
+  text-align: center;
+}
+.player .play-btn i {
+  cursor: pointer;
+}
+.player .play-timer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+.progress-bar {
+  width: 100%;
+  height: 10px;
+  background: gray;
+  position: relative;
+  cursor: pointer;
+}
+.progress-bar:hover {
+  opacity: 0.6;
+}
+.progress-bar .progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background: red;
+  width: 0;
+}
+.progress-bar .progress span:first-of-type {
+  position: absolute;
+  right: 0;
+  top: -1px;
+  translate: 50% 0;
+  width: 12px;
+  height: 12px;
+  background: blueviolet;
+  border-radius: 50%;
+}
+.time-span{
+  left: 10px;
+  top: -13px;
+  position: absolute;
+  font-size: 11px;
+  opacity: 0;
+}
+audio {
+  display: none;
+}
+.wrap {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+.wrap > .player:last-child {
+  text-align: center;
+}
+.player div:last-of-type {
+  text-align: center;
+}
+
+.karaoke-btn {
+  padding: 5px 10px;
+  border: none;
+  background-color: blueviolet;
+  color: aliceblue;
+  cursor: pointer;
+}
+.karaoke-overlay {
+  text-align: center;
+  height: 100vh;
+  position: absolute;
+  width: 100vw;
+  top: 100%;
+  left: 0;
+  background-color: blueviolet;
+  transition: top 0.5s ease;
+}
+
+.karaoke-overlay-header {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+.karaoke-overlay-header h1 {
+  color: white;
+}
+.karaoke-overlay-header button {
+  background-color: transparent;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+.karaoke-overlay-header button i {
+  font-size: 1.5rem;
+  color: white;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 300px;
+  color: white;
+  font-size: 5rem;
+}

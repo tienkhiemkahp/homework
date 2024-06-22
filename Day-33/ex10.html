@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/ex10.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="player">
+        <div class="play-btn">
+          <i class="fa-solid fa-play"></i>
+        </div>
+        <div class="play-timer">
+          <span>00:00</span>
+          <div class="progress-bar">
+            <span class="time-span">00.00</span>
+            <div class="progress">
+              <span class="progress-span"></span>
+            </div>
+          </div>
+          <span>00:00</span>
+        </div>
+        <div>
+          <button class="karaoke-btn">Hát Karaoke</button>
+        </div>
+      </div>
+      <div class="karaoke-overlay">
+        <div class="karaoke-overlay-header">
+          <h1>Karaoke</h1>
+          <button class="close-btn-karaoke-overlay"><i class="fa-solid fa-v"></i></button>
+        </div>
+        <div class="content">
+          <span>Hứa đợi nhưng chẳng tới</span>
+          <span style="margin-top: 20px;">Lâm Tuấn</span>
+        </div>
+      </div>
+    </div>
+    <audio src="./mp3/90087d3044a1452842374850ecfcd5e9.mp3" controls></audio>
+    <script src="js/lyric.js"></script>
+    <script src="js/ex10.js"></script>
+  </body>
+</html>
