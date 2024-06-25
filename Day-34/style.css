@@ -1,0 +1,15 @@
+.list {
+    background: #3c65a7;
+    width: 500px;
+    padding: 1rem;
+  }  
+  .list-item {
+    background: #5879ad;
+    padding: 0.5rem;
+    border: 1px solid white;
+    margin: 1px 0;
+  }
+  
+  .list-item.active {
+    background: rgb(236, 107, 9);
+  }
