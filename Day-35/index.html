@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="wapper">
+        <div class="header">
+            <h1>Doc Editor</h1>
+        </div>
+        <hr>
+        <div class="controls">
+            <div class="left-controls">
+                <button class="file-btn">File</button>
+                <input type="text" class="file-name-input" value="untitled">
+                <div class="dropdown-menu">
+                    <button class="new-btn">New</button>
+                    <button class="save-txt-btn">Save as TXT</button>
+                    <button class="save-pdf-btn">Save as PDF</button>
+                </div>
+            </div>
+            <div class="right-controls">
+                <button class="bold-btn">b</button>
+                <button class="underline-btn">u</button>
+                <button class="italic-btn">i</button>
+                <input type="color" class="color-input" name="" id="">
+            </div>
+        </div>
+        <div class="content" contenteditable="true">
+              
+       </div>
+       <div class="count">
+           <span>Số ký tự: 0</span>
+           <span>Số từ: 0</span>
+       </div>  
+    </div>
+    <script
+	src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="crossorigin="anonymous"referrerpolicy="no-referrer"></script>
+    <script src="./script.js"></script>
+</body>
+</html>
