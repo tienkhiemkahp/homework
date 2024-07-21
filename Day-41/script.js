@@ -55,45 +55,29 @@ const handleLogin = async (form, loginEmail, loginPassword) => {
         isLogined = true;
         isFirstTime = false
         render(true, loginData)
+        console.log(loginData);
     } else {
         showMessage(form, `${loginData.message}`)
     }
     removeLoadingBtn(form)
 }
 
-const handlePostBlog = async (form, title, content) => {
-    console.log(JSON.stringify({title: title, content: content}));
-    const response = await fetch(`${apiUrl}/auth/blogs`, {
-        method: "POST",
-        headers: {
-            'Authorization': `Bearer ${localStorage.getItem("access_token")}`
-        },
-        body: JSON.stringify({title: title, content: content})
-    })
-    const postData = await response.json()
-    if (postData.code === 200) {
-        showMessage(form, `${loginData.message}`)
-        render(true, loginData)
-    } else {
-        // showMessage(form, `${loginData.message}`)
-    }
-    removeLoadingBtn(form)
-}
+
 
 const handleRefreshToken = async () => {
     const refreshToken = localStorage.getItem("refresh_token")
     if (refreshToken) {
         const response = await fetch(`${apiUrl}/auth/refresh-token`, {
-            method: 'POST',
+            method: "POST",
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({ refreshToken })
         })
         const tokenData = await response.json()
-        if (tokenData.code === 200) {
-            localStorage.setItem("access_token", tokenData.data.token.accessToken);
-            localStorage.setItem("refresh_token", tokenData.data.token.refreshToken);
+        if (tokenData.code === 200 ) {
+            await localStorage.setItem("access_token", tokenData.data.token.accessToken);
+            await localStorage.setItem("refresh_token", tokenData.data.token.refreshToken);
             return true;
         } else {
             handleLogout();
@@ -104,7 +88,11 @@ const handleRefreshToken = async () => {
         return false;
     }
 }
-
+setInterval(function () {
+    if (isLogined) {
+        handleRefreshToken()
+    }
+}, 2000)
 const handleRegister = async (form, registerEmail, registerPassword, registerUsername) => {
     const response = await fetch(`${apiUrl}/auth/register`, {
         method: "POST",
@@ -133,12 +121,24 @@ const removeLoadingBtn = (form) => {
     btn.innerText = "Đăng nhập";
     btn.disabled = false;
 };
-const handleLogout = () => {
-    isFirstTime = false;
-    localStorage.removeItem("access_token");
-    localStorage.removeItem("refresh_token");
-    isLogined = false;
-    render(false);
+const handleLogout = async () => {
+    const accessToken = localStorage.getItem("access_token")
+    const response = await fetch(`${apiUrl}/auth/logout`, {
+        method: "POST",
+        headers: {
+            'Authorization': `Bearer ${accessToken}`,
+            'Content-Type': 'application/json'
+        },
+    })
+    const logoutStatus = await response.json()
+    console.log(logoutStatus);
+    if (logoutStatus.code === 200) {
+        isFirstTime = false;
+        localStorage.removeItem("access_token");
+        localStorage.removeItem("refresh_token");
+        isLogined = false;
+        render(false);
+    }
 };
 const render = (status, loginData) => {
     isLogined = localStorage.getItem("access_token") ? true : false;
@@ -155,6 +155,7 @@ const render = (status, loginData) => {
             <div class="container mt-5 ${isLogined ? `` : `d-none`}" style="max-width: 600px">
                 <h2 class="text-center mb-4">Create a New Post</h2>
                 <form class="auth-form post-form">
+                    <div class="msg-el"></div>
                     <div class="mb-4">
                         <label class="form-label" for="title">Title</label>
                         <input type="text" id="title" class="form-control" placeholder="Enter the title" required>
@@ -295,3 +296,23 @@ const handleScroll = (pageNumber, renderPostEl) => {
 }
 
 
+const handlePostBlog = async (form, title, content) => {
+    console.log(title);
+    const response = await fetch(`${apiUrl}/blogs`, {
+        method: "POST",
+        headers: {
+            'Authorization': `Bearer ${localStorage.getItem("access_token")}`,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({title: title, content: content}),
+    })
+    console.log(JSON.stringify({title: title, content: content}));
+    const postData = await response.json()
+    console.log(postData.message);
+    if (postData.code === 200) {
+        showMessage(form, `${postData.message}`)
+        setTimeout(function(){location.reload()}, 2000)
+    } else {
+    }
+    removeLoadingBtn(form)
+}
