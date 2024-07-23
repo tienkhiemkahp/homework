@@ -69,6 +69,7 @@ const render = async () => {
         <div class="container mt-5" style="max-width: 600px">
             <h2 class="text-center mb-4">Create a New Post</h2>
             <form class="auth-form post-form">
+            <div class="msg-el"></div>
             <div>User Name: ${userName}</div>
                 <div class="msg-el"></div>
                 <div class="mb-4">
@@ -94,6 +95,35 @@ const render = async () => {
         handleScroll(1, renderPost)
     }
 }
+
+// Refreshtoken
+
+const getRefreshToken = async () => {
+    try {
+        const refreshToken = JSON.parse(localStorage.getItem("login_token")).refresh_token
+        const {response, data} = await httpClient.post('/auth/refresh-token', {refreshToken})
+        console.log(data);
+        const tokens = {
+            access_token: data.data.token.accessToken,
+            refresh_token: data.data.token.refreshToken
+        }
+        setTokenStorage(tokens)
+        console.log(tokens);
+        httpClient.token = tokens.access_token;
+    } catch {
+        localStorage.removeItem("login_token")
+        httpClient.token = null;
+        render()
+    }
+}
+
+setInterval(function () {
+    if (isLogin) {
+        getRefreshToken()
+    }
+}, 1600)
+
+
 // Thêm loading
 
 const setLoadingBtn = (form) => {
@@ -238,7 +268,7 @@ const handleScroll = (pageNumber, renderPostEl) => {
     getBlogs(pageNumber, renderPostEl)
     window.addEventListener('scroll', function () {
         var rate = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
-        if (rate === 1) {
+        if (rate == 1) {
             setTimeout(function () {
                 pageNumber += 1;
                 getBlogs(pageNumber, renderPostEl)
@@ -250,21 +280,7 @@ const handlePostBlog = async(postForm, title, content) => {
     const token = JSON.parse(localStorage.getItem("login_token")).access_token;
     const {response, data} = await httpClient.post('/blogs', {title, content}, {token})
     if (response.ok && data.code === 200 && data.status_code === "SUCCESS") {
-        alert("đăng bài thành công")
-        showMessage(postForm, `${data.message}`)
         render()
-    } else if (!response.ok) {
-        console.log(`khim`);
-        const refreshToken = JSON.parse(localStorage.getItem("login_token")).refresh_token;
-        const response = await fetch(`https://api-auth-two.vercel.app/auth/refresh-token`, {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ refreshToken })
-        })
-        const tokenData = await response.json()
-        console.log(tokenData);
     }
 }
 logoutBtn.addEventListener("click", handleLogout);
