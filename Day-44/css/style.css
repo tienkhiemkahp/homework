@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+    padding: 0;
+    padding-top: 60px; /* To avoid content being hidden behind the fixed header */
+}
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-bottom: 1px solid #dee2e6;
+    z-index: 1030; /* Ensure the header is on top of other content */
+}
+.post-container {
+    border: 1px solid #ddd;
+    border-radius: 0.375rem;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+.post-meta {
+    font-size: 0.875rem;
+    color: #6c757d;
+}
+.post-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+.post-content {
+    margin-top: 0.5rem;
+}
