@@ -1,0 +1,27 @@
+img {
+    width: 100%;
+}
+span {
+    color: gray;
+}
+span > a {
+    color: gray !important;
+}
+.header {
+    font-family: sans-serif,
+}
+.title {
+    font-family: 'Helvetica Neue', Arial, sans-serif; /* Font sans-serif tương đương */
+    font-weight: 600; /* Font-semibold tương đương */
+    color: #1f2937; /* Màu chữ gần giống text-blue-gray-900 */
+    margin-bottom: 1.5rem; /* Margin-bottom tương đương mb-4 */
+    line-height: 1.2; /* Dẫn đầu chặt chẽ */
+}
+@media (min-width: 992px) { /* lg:text-5xl tương đương cho màn hình lớn */
+    .title {
+      font-size: 3rem;
+    }
+  }
+  .text-3xl {
+    font-size: 1.875rem; /* Kích thước chữ cơ bản */
+  }

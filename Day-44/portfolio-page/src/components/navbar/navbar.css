@@ -1,0 +1,46 @@
+nav {
+    background-color: rgba(255, 255, 255, 0.8); 
+    backdrop-filter: blur(20px); 
+    z-index: 50;
+    position: sticky;
+  }
+  ul {
+    list-style-type: none;
+  }
+  .gap-8 {
+    gap: 2rem;
+  }
+
+  /* Định nghĩa lớp cho nút SIGN IN */
+.signin-btn {
+    transition: all 0.3s ease;
+  }
+  
+  .signin-btn:hover {
+    color: white !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #a5a5a5  !important; /* Thay đổi màu nền khi hover (tuỳ chọn) */
+  }
+  .btn-group {
+    display: flex;
+    align-items: center;
+
+    gap: 0.5rem;
+  } 
+  /* Định nghĩa lớp cho nút BLOCKS */
+  .blocks-btn {
+    background-color: black  !important;
+    color: white !important;
+    transition: all 0.3s ease;
+  }
+  
+  .blocks-btn:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #a5a5a5  !important; /* Thay đổi màu nền khi hover (tuỳ chọn) */
+    color: black !important;
+  }
+  .popup-list {
+    width: fit-content;
+    margin-left: 2rem;
+    display: none;
+  }
