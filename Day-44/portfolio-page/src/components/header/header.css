@@ -8,20 +8,60 @@ span > a {
     color: gray !important;
 }
 .header {
-    font-family: sans-serif,
+    font-family: sans-serif;
 }
 .title {
-    font-family: 'Helvetica Neue', Arial, sans-serif; /* Font sans-serif tương đương */
-    font-weight: 600; /* Font-semibold tương đương */
-    color: #1f2937; /* Màu chữ gần giống text-blue-gray-900 */
-    margin-bottom: 1.5rem; /* Margin-bottom tương đương mb-4 */
-    line-height: 1.2; /* Dẫn đầu chặt chẽ */
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
 }
-@media (min-width: 992px) { /* lg:text-5xl tương đương cho màn hình lớn */
+@media (min-width: 992px) {
     .title {
       font-size: 3rem;
     }
-  }
-  .text-3xl {
-    font-size: 1.875rem; /* Kích thước chữ cơ bản */
-  }
+}
+.text-3xl {
+    font-size: 1.875rem;
+}
+.form-outline {
+    position: relative;
+    margin-top: 1.5rem;
+    flex-grow: 1;
+}
+.form-control {
+    padding-top: 0.75rem; 
+    padding-bottom: 0.75rem; 
+    border: 1px solid #ced4da;
+    box-shadow: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.form-label {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.75rem;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    font-size: 0.9rem;
+    color: #aaa;
+}
+.form-control:focus {
+    border: 1px solid #000 !important;
+    box-shadow: none !important;
+}
+.form-control:focus + .form-label,
+.form-control:not(:placeholder-shown) + .form-label {
+    top: -0.75rem;
+    left: 0.75rem;
+    font-size: 0.75rem;
+    color: #000 !important;
+    background-color: #fff;
+    padding: 0 0.25rem;
+}
+.form-control::placeholder {
+    opacity: 0;
+}
+.content {
+    color: #A2A2A2;
+}

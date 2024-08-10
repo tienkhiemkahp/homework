@@ -3,6 +3,7 @@ nav {
     backdrop-filter: blur(20px); 
     z-index: 50;
     position: sticky;
+    opacity: 95%;
   }
   ul {
     list-style-type: none;

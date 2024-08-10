@@ -1,0 +1,15 @@
+
+  .text-blue-gray-900 {
+    color: #1f2937; /* Màu gần giống với text-blue-gray-900 */
+  }
+  .client-img {
+    width: 10rem;
+    max-width: 100%;
+    height: auto; /* Giữ tỷ lệ khung hình của ảnh */
+    object-fit: contain; /* Đảm bảo ảnh nằm gọn trong thẻ chứa */
+}
+@media (max-width: 423px) {
+  .logo-wrap{
+    flex-direction: column;
+  }
+}
