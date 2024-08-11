@@ -1,3 +1,8 @@
-.section-2 > p:first-child{
-    color: red !important;
+.circle {
+    background-color: black;
+    padding: 1rem;
+}
+.custom-svg {
+    width: 50px; /* Kích thước chiều rộng mong muốn */
+    height: 50px; /* Kích thước chiều cao mong muốn */
 }

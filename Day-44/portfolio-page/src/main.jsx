@@ -6,6 +6,5 @@ const root = document.querySelector("#root");
 ReactDOM.createRoot(root).render(
   <React.StrictMode>
     <App />
-    <div></div>
   </React.StrictMode>
 );
